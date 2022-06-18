@@ -1,5 +1,6 @@
 package com.example.ipl.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 // import org.springframework.beans.factory.annotation.Autowired;
 // import org.springframework.data.domain.PageRequest;
 // import org.springframework.data.domain.Pageable;
@@ -12,6 +13,7 @@ import com.example.ipl.repository.MatchRepository;
 import com.example.ipl.repository.TeamRepository;
 
 @RestController
+@CrossOrigin
 public class TeamController {
 
     /*
