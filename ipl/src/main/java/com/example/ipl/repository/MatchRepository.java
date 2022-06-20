@@ -2,10 +2,13 @@ package com.example.ipl.repository;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import com.example.ipl.model.Match;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface MatchRepository extends CrudRepository<Match, Long> {
@@ -24,6 +27,19 @@ public interface MatchRepository extends CrudRepository<Match, Long> {
     default List<Match> findLatestMatchesByTeam(String teamName , int count ){
         return getByTeam1OrTeam2OrderByDateDesc(teamName, teamName, PageRequest.of(0, count)) ;
     }
+
+    // Method Naming for finding match details for perticular year
+    // List<Match> getByTeam1AndDateBetweenOrTeam2AndDateBetweenOrderByDateDesc(String team1 ,LocalDate date1 , LocalDate date2,
+    //                                          String team2, LocalDate date3 , LocalDate date4) ;
+    
+    // since above method is wired, instead of Method naming technique in JPA ,
+    // here, we use our own Jql                                          
+
+    @Query("select m from Match m where (m.team1 = :teamName or m.team2 = :teamName) and m.date between :startDate and :endDate order by date desc")                                        
+    List<Match> getMatchesByTeamBetweenDates( 
+        @Param("teamName") String teamName ,
+        @Param("startDate") LocalDate startDate ,
+        @Param("endDate") LocalDate endDate) ;
 
 
 }
