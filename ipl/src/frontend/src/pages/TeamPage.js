@@ -60,7 +60,7 @@ export const TeamPage = () => {
     
             <TeamDetailCard teamName = {team.teamName} match = {team.matches[0]} /> 
         </div>
-        {/* following smallCard section has individual dives */}
+        {/* following smallCard section has individual dives --  therefore react needs a key*/}
         {team.matches.slice(1).map( match => <TeamDetailSmallCard key={match.id} teamName = {team.teamName} match = {match} />) }
         <div className='more-link'>
             <Link to={`/teams/${teamName}/matches/2020`}>More >></Link>

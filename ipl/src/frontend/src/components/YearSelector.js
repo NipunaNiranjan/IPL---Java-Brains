@@ -21,7 +21,7 @@ export const YearSelector = ({teamName}) => {
         { years.map(year => (
             <li key={year}>
                 {/* react router links */}
-                <Link to={`/teams/${teamName}/matches/${year}`}>{year}</Link>
+                <Link key = {year} to={`/teams/${teamName}/matches/${year}`}>{year}</Link>
             </li>
         )) }
         </ol>
