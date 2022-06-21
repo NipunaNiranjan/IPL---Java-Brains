@@ -2,7 +2,9 @@ import {React, useState , useEffect } from 'react' ;
 import { useParams } from 'react-router-dom';
 
 import { TeamDetailCard } from '../components/TeamDetailCard';
+import { YearSelector } from '../components/YearSelector';
 
+import './MatchPage.scss' ;
 
 export const MatchPage = () => {
 
@@ -26,16 +28,21 @@ export const MatchPage = () => {
             fetchMatchesByDates();
         } ,[teamName,year]
     );
-    //     if( !matches || !console.error( matches) ){
-    //     return <h1>Matches Not found!!!!!!!! </h1>
-    // }
+        if( !{year} ){
+        return <h1>Matches Not found!!!!!!!! </h1>
+    }
 
     return (
         <div className='MatchPage'>
-            <h1>This is {teamName} Match page</h1>
+            <div className='year-selector'>
+                <YearSelector teamName={teamName} />
+            </div>
+            <div>
+            < h1 className='page-heading'>{teamName} Matches in {year}</h1>
             {
                 matches.map( match => <TeamDetailCard teamName = {teamName} match = {match} /> )
             }
+            </div>
         </div>
         
     );

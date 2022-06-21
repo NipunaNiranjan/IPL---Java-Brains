@@ -1,5 +1,5 @@
 import {React , useEffect , useState} from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams , Link } from 'react-router-dom';
 import { TeamDetailCard } from '../components/TeamDetailCard';
 import { TeamDetailSmallCard } from '../components/TeamDetailSmallCard';
 
@@ -42,6 +42,7 @@ export const TeamPage = () => {
     <div className="TeamPage">
         {/* when styling using Grids each column needs to be in a DIV */}
        <div className='team-name-section'> 
+       
             <h1 className='team-name'>{team.teamName}</h1>
         </div>
        <div className='win-loss-section'>
@@ -56,12 +57,14 @@ export const TeamPage = () => {
         </div>
         <div className='match-detail-section'>
             <h3>Latest Match Details...</h3>
+    
             <TeamDetailCard teamName = {team.teamName} match = {team.matches[0]} /> 
         </div>
         {/* following smallCard section has individual dives */}
         {team.matches.slice(1).map( match => <TeamDetailSmallCard teamName = {team.teamName} match = {match} />) }
         <div className='more-link'>
-            <a href="#">More >></a>
+            <Link to={`/teams/${teamName}/matches/${process.env.REACT_APP_DATA_END_YEAR}`}>More >></Link>
+        
         </div>
     </div>
   );
