@@ -12,7 +12,7 @@ export const MatchPage = () => {
 
     // const teamNames = "Royal Challengers Bangalore" ;
     // const year = 2016 ;
-    const {teamName, year} = useParams ;
+    const {teamName, year} = useParams() ;
   
     useEffect (
 
@@ -40,7 +40,7 @@ export const MatchPage = () => {
             <div>
             < h1 className='page-heading'>{teamName} Matches in {year}</h1>
             {
-                matches.map( match => <TeamDetailCard teamName = {teamName} match = {match} /> )
+                matches.map( match => <TeamDetailCard key = {match.id} teamName = {teamName} match = {match} /> )
             }
             </div>
         </div>

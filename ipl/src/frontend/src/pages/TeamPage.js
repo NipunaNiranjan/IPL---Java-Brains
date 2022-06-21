@@ -63,7 +63,7 @@ export const TeamPage = () => {
         {/* following smallCard section has individual dives */}
         {team.matches.slice(1).map( match => <TeamDetailSmallCard teamName = {team.teamName} match = {match} />) }
         <div className='more-link'>
-            <Link to={`/teams/${teamName}/matches/${process.env.REACT_APP_DATA_END_YEAR}`}>More >></Link>
+            <Link to={`/teams/${teamName}/matches/2020`}>More >></Link>
         
         </div>
     </div>
