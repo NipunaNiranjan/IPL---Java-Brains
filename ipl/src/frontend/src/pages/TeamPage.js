@@ -3,7 +3,9 @@ import { useParams } from 'react-router-dom';
 import { TeamDetailCard } from '../components/TeamDetailCard';
 import { TeamDetailSmallCard } from '../components/TeamDetailSmallCard';
 
+import './TeamPage.scss' ;
 
+import { PieChart } from 'react-minimal-pie-chart';
 
 export const TeamPage = () => {
 
@@ -12,6 +14,8 @@ export const TeamPage = () => {
     // useParam gives list of param objects
     
     const {teamName} = useParams();
+
+   
 
     useEffect(
         () => {
@@ -28,6 +32,7 @@ export const TeamPage = () => {
         // if u only need to lard this page onece, put the array empty here.
     );
 
+
     if( !team || !team.teamName){
         return <h1>Team Not found!!!!!!!!</h1>
     }
@@ -35,9 +40,29 @@ export const TeamPage = () => {
 
   return (
     <div className="TeamPage">
-        <h1>This is  {team.teamName}team page</h1>
-        <TeamDetailCard teamName = {team.teamName} match = {team.matches[0]} />
+        {/* when styling using Grids each column needs to be in a DIV */}
+       <div className='team-name-section'> 
+            <h1 className='team-name'>{team.teamName}</h1>
+        </div>
+       <div className='win-loss-section'>
+            Wins/Losses
+            <PieChart
+            data={[
+                { title: 'Wins', value: team.totalwins, color: '#4da375' },
+                { title: 'Losses', value: team.totalMatches , color: '#a34d5d' },
+                
+            ]}
+            />
+        </div>
+        <div className='match-detail-section'>
+            <h3>Latest Match Details...</h3>
+            <TeamDetailCard teamName = {team.teamName} match = {team.matches[0]} /> 
+        </div>
+        {/* following smallCard section has individual dives */}
         {team.matches.slice(1).map( match => <TeamDetailSmallCard teamName = {team.teamName} match = {match} />) }
+        <div className='more-link'>
+            <a href="#">More >></a>
+        </div>
     </div>
   );
 }

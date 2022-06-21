@@ -1,0 +1,36 @@
+.TeamPage {
+    display: grid; /* consider whole page as a grid --- inside return () part of TramPage.js*/
+    grid-template-columns: 1fr 1fr 1fr 1fr; /* since we use 4 equal columns for our entire page*/
+    grid-template-rows: 1fr 1fr 1fr; /* 3 rows */
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+
+
+    .team-name-section {
+        grid-column: span 3; /* we need section for 3 column span*/
+        justify-self: start; /* Horizontally*/
+        align-self: end; /* vertically align-- to get the bottom of the div*/
+    }
+
+    .team-name {
+        font-size: 4rem;
+        margin-bottom: 20px;
+    }
+
+    .win-loss-section {
+        justify-self: center;
+        padding: 40px;
+        text-align: center;
+    }
+
+    .match-detail-section {
+        grid-column: span 4; /* we need section for 4 column span -- entire row*/
+    }
+
+    .more-link {
+        align-self: center; /* vertically*/
+        justify-self: left; /* horizontally */
+        font-size: 1.5rem;
+
+    }
+}

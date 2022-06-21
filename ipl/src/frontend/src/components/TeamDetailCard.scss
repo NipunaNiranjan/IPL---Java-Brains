@@ -1,0 +1,40 @@
+.TeamDetailCard {
+    /* inside DetailCard also we are going to use grid
+    but here, the space for the grid is related to the space, which is allocated from the parent TeamPage*/
+
+    /* inside grid,,  i column is equal to a div, so we need to create
+    individuals DIVs */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns */
+    padding: 10px;
+    margin-bottom: 20px;
+    ;
+
+
+    .match-date,
+    .match-venue,
+    .match-city,
+    .match-result {
+        margin-top: 10px;
+    }
+
+    .additional-detail {
+        text-align: right;
+
+        &>p {
+            margin-bottom: 20px;
+            ;
+        }
+
+    }
+
+}
+
+/* add those classes to App.scss , then we can apply it to SmallDetailCards too*/
+// .won-card{
+//     background-color: #4da375;
+// }
+
+// .lost-card{
+//     background-color: #a34d5d;
+// }
