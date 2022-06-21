@@ -11,7 +11,7 @@ export const YearSelector = ({teamName}) => {
     const startYear = 2008;
     const endYear = 2020;
 
-    for (let i = startYear; i <= endYear; i++ ) {
+    for (let i = endYear; i >= startYear; i-- ) {
         years.push(i);
     }
 
