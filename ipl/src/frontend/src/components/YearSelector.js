@@ -18,6 +18,7 @@ export const YearSelector = ({teamName}) => {
 
     return (
         <ol className="YearSelector">
+            <h4>Select Year</h4>
         { years.map(year => (
             <li key={year}>
                 {/* react router links */}

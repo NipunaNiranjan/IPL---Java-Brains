@@ -21,7 +21,7 @@ export const TeamPage = () => {
         () => {
             const fetchTeam = async () => {
                 
-                const response = await fetch(`http://localhost:8080/team/${teamName}`);
+                const response = await fetch(`/team/${teamName}`);
                 const data = await response.json();
                 console.log(data);
                 teamSet(data);
