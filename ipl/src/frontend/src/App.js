@@ -1,6 +1,6 @@
 
 import './App.scss';
-
+//use HashRoutes only for deploying purpose, when developing use, BrowserRouter
 import { HashRouter as Router,Routes, Route, Navigate } from 'react-router-dom' ;
 
 import {TeamPage} from './pages/TeamPage';
